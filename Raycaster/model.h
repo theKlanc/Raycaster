@@ -9,6 +9,6 @@ public:
 	virtual ~model()=0;
 	virtual bool isInside(point3d p)=0;
 	virtual vector3d getNormalVectorAtPoint(point3d v)=0;
-	virtual point3d getLineIntersection(line3d v)=0;
+	virtual point3d getInwardLineIntersection(line3d v)=0;
+	virtual point3d getOutwardLineIntersection(line3d v)=0;
 };
-

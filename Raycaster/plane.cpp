@@ -23,13 +23,18 @@ vector3d plane::getNormalVectorAtPoint(point3d p) {
 	return getNormalVec();
 }
 
-point3d plane::getLineIntersection(line3d v) {
+point3d plane::getInwardLineIntersection(line3d v) {
 	double  t = (((A*v.getOrigin().getX())+(B*v.getOrigin().getY())+(C*v.getOrigin().getZ())+d)) / ((A*(v.getTip()-v.getOrigin()).getX())+ (B*(v.getTip() - v.getOrigin()).getY()) + (C*(v.getTip() - v.getOrigin()).getZ()));
 	vector3d t2 = v.getVector();
 	t2.setLength(t2.getLength()*t);
 	vector3d t3 = t2.getTip() + v.getOrigin();
 	point3d t4 = t3.getTip();
 	return t4;
+}
+
+point3d plane::getOutwardLineIntersection(line3d v)
+{
+	return getInwardLineIntersection(v);
 }
 
 bool plane::isInside(point3d p)
