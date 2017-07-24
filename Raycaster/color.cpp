@@ -1,15 +1,22 @@
 #include "color.h"
+#include "HardwareInterface.h"
 
 color::~color() {}
 
-int color::getRComponent() const {
+unsigned int color::getRComponent() const {
 	return r;
 }
 
-int color::getGComponent() const {
+unsigned int color::getGComponent() const {
 	return g;
 }
 
-int color::getBComponent() const {
+unsigned int color::getBComponent() const {
 	return b;
 }
+
+unsigned int color::getAComponent() const {
+	return a;
+}
+
+unsigned int color::getInt() const { return RGBA8(r, g, b, a); }

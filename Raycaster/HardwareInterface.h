@@ -4,9 +4,13 @@
 #define RGBA8(r, g, b, a) ((((a)&0xFF)<<24) | (((b)&0xFF)<<16) | (((g)&0xFF)<<8) | (((r)&0xFF)<<0))
 #define BIT(n) (1U<<(n))
 
+
 namespace HardwareInterface
 {
 	typedef void* HITexture;
+	typedef unsigned char uint8;
+	typedef unsigned int uint32;
+	typedef uint32* HIImage;
 	typedef void* HIFont;
 	typedef int HIColor;
 	enum HI_PLATFORM {
@@ -164,6 +168,7 @@ namespace HardwareInterface
 	HITexture loadPngFile(std::string path);
 	HITexture loadBmpFile(std::string path);
 	void drawTexture(HITexture texture, int posX, int posY);
+	void drawImage(HIImage image, int sizeX, int sizeY, int posX,int posY);
 	void drawTexturePart(HITexture texture, int startX, int startY, int posX, int posY, int sizeX, int sizeY);
 	void drawTextureRotate(HITexture texture, int posX, int posY, float angle);
 	void mergeTextures(HITexture originTexture, HITexture destinationTexture, short posX, short posY);

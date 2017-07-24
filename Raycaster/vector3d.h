@@ -1,5 +1,4 @@
 #pragma once
-// Aixo realment no es un vector, sinò un bipunt/linia, pero pot usar-se per representar vectors. SEPARANT
 #include "point3d.h"
 
 class vector3d {

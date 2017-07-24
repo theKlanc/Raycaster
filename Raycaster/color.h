@@ -1,11 +1,14 @@
 #pragma once
 class color {
 public:
-	color(int r, int g, int b) : r(r), g(g), b(b) {};
+	color(unsigned int r, unsigned int g, unsigned int b, unsigned int a = 255) : r(r), g(g), b(b), a(a){};
 	~color();
-	int getRComponent() const;
-	int getGComponent() const;
-	int getBComponent() const;
+	unsigned int getRComponent() const;
+	unsigned int getGComponent() const;
+	unsigned int getBComponent() const;
+	unsigned int getAComponent() const;
+	unsigned int getInt() const;
+
 private:
-	int r, g, b;
+	unsigned int r, g, b,a;
 };

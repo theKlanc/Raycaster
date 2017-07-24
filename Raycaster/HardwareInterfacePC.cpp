@@ -97,13 +97,24 @@ void HI::drawTexture(HI::HITexture texture, int posX, int posY) {
 	}
 }
 
+void HardwareInterface::drawImage(HIImage image, int sizeX, int sizeY, int posX, int posY) {
+	sf::Image im;
+	im.create(sizeX, sizeY, (sf::Uint8*)image);
+	sf::Texture tex;
+	tex.loadFromImage(im, sf::IntRect(0, 0, sizeX, sizeY));
+	sf::Sprite sprite;
+	sprite.setPosition(posX, posY);
+	sprite.setTexture(tex);
+	window->draw(sprite);
+}
+
 void HI::drawTextureRotate(HI::HITexture texture, int posX, int posY, float angle) {
 	if (texture != nullptr) {
 		sf::Sprite sprite;
 		sprite.setOrigin(8, 8);
 		sprite.setRotation(360 * angle / (2 * PI));
 		sprite.setTexture(*(sf::Texture*)texture);
-		sprite.setPosition(sf::Vector2f(posX, posY));
+		sprite.setPosition(posX, posY);
 		window->draw(sprite);
 	}
 }
