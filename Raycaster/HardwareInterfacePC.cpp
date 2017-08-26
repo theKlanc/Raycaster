@@ -17,7 +17,6 @@ sf::Event* event;
 void HI::systemInit() {
 	event = new sf::Event;
 	window = new sf::RenderWindow(sf::VideoMode(1000, 1000), "Rogue3DS");
-	//HI::consoleInit();
 }
 
 void HI::systemFini() {

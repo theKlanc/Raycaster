@@ -17,6 +17,8 @@ public:
 	vector3d operator-(vector3d v)const;
 	bool operator<(double d) const;
 	double dot(vector3d v) const;
+	vector3d rotate(vector3d v) const;
+	
 private:
 	double length;
 	point3d unitaryVector;

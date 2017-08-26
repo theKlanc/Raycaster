@@ -5,8 +5,7 @@
 #define BIT(n) (1U<<(n))
 
 
-namespace HardwareInterface
-{
+namespace HardwareInterface {
 	typedef void* HITexture;
 	typedef unsigned char uint8;
 	typedef unsigned int uint32;
@@ -18,18 +17,15 @@ namespace HardwareInterface
 		PLATFORM_NINTENDO3DS,
 		PLATFORM_PC,
 	};
-	enum HI_SCREEN
-	{
+	enum HI_SCREEN {
 		SCREEN_TOP,
 		SCREEN_BOT
 	};
-	enum HI_CIRCLEPAD
-	{
+	enum HI_CIRCLEPAD {
 		CIRCLEPAD_LEFT,
 		CIRCLEPAD_RIGHT
 	};
-	enum HI_KEYS
-	{
+	enum HI_KEYS {
 		HI_KEY_A = BIT(0),       ///< A
 		HI_KEY_B = BIT(1),       ///< B
 		HI_KEY_SELECT = BIT(2),       ///< Select
@@ -60,16 +56,13 @@ namespace HardwareInterface
 								   HI_KEY_LEFT = HI_KEY_DLEFT | HI_KEY_CPAD_LEFT,  ///< D-Pad Left or Circle Pad Left
 								   HI_KEY_RIGHT = HI_KEY_DRIGHT | HI_KEY_CPAD_RIGHT ///< D-Pad Right or Circle Pad Right
 	};
-	struct  dspAdpcmData
-	{
+	struct  dspAdpcmData {
 		unsigned short index;    ///< Current predictor index
 		short history0; ///< Last outputted PCM16 sample.
 		short history1; ///< Second to last outputted PCM16 sample.
 	};
-	struct dspWaveBuf
-	{
-		union
-		{
+	struct dspWaveBuf {
+		union {
 			char*         data_pcm8;  ///< Pointer to PCM8 sample data.
 			short*        data_pcm16; ///< Pointer to PCM16 sample data.
 			unsigned char*         data_adpcm; ///< Pointer to DSPADPCM sample data.
@@ -85,13 +78,11 @@ namespace HardwareInterface
 		unsigned short sequence_id;   ///< Sequence ID. Assigned automatically by ndspChnWaveBufAdd.
 		dspWaveBuf* next; ///< Next buffer to play. Used internally, do not modify.
 	};
-	enum dspClippingMode
-	{
+	enum dspClippingMode {
 		DSP_CLIP_NORMAL = 0, ///< "Normal" clipping mode (?)
 		DSP_CLIP_SOFT = 1, ///< "Soft" clipping mode (?)
 	};
-	enum dspOutputMode
-	{
+	enum dspOutputMode {
 		DSP_OUTPUT_MONO = 0, ///< Mono sound
 		DSP_OUTPUT_STEREO = 1, ///< Stereo sound
 		DSP_OUTPUT_SURROUND = 2, ///< 3D Surround sound
@@ -101,15 +92,13 @@ namespace HardwareInterface
 		DSP_INTERP_LINEAR = 1, ///< Linear interpolation
 		DSP_INTERP_NONE = 2, ///< No interpolation
 	};
-	enum
-	{
+	enum {
 		DSP_WBUF_FREE = 0, ///< The wave buffer is not queued.
 		DSP_WBUF_QUEUED = 1, ///< The wave buffer is queued and has not been played yet.
 		DSP_WBUF_PLAYING = 2, ///< The wave buffer is playing right now.
 		DSP_WBUF_DONE = 3, ///< The wave buffer has finished being played.
 	};
-	enum
-	{
+	enum {
 		DSP_ENCODING_PCM8 = 0, ///< PCM8
 		DSP_ENCODING_PCM16,    ///< PCM16
 		DSP_ENCODING_ADPCM,    ///< DSPADPCM (GameCube format)
@@ -121,8 +110,7 @@ namespace HardwareInterface
 #define DSP_ENCODING(n) (((unsigned int)(n) & 3) << 2)
 
 	/// Channel format flags for use with ndspChnSetFormat.
-	enum
-	{
+	enum {
 		DSP_FORMAT_MONO_PCM8 = DSP_CHANNELS(1) | DSP_ENCODING(DSP_ENCODING_PCM8),  ///< Buffer contains Mono   PCM8.
 		DSP_FORMAT_MONO_PCM16 = DSP_CHANNELS(1) | DSP_ENCODING(DSP_ENCODING_PCM16), ///< Buffer contains Mono   PCM16.
 		DSP_FORMAT_MONO_ADPCM = DSP_CHANNELS(1) | DSP_ENCODING(DSP_ENCODING_ADPCM), ///< Buffer contains Mono   ADPCM.
@@ -168,7 +156,7 @@ namespace HardwareInterface
 	HITexture loadPngFile(std::string path);
 	HITexture loadBmpFile(std::string path);
 	void drawTexture(HITexture texture, int posX, int posY);
-	void drawImage(HIImage image, int sizeX, int sizeY, int posX,int posY);
+	void drawImage(HIImage image, int sizeX, int sizeY, int posX, int posY); //HIImage image should be a pointer to an array of RGBA8 pixels
 	void drawTexturePart(HITexture texture, int startX, int startY, int posX, int posY, int sizeX, int sizeY);
 	void drawTextureRotate(HITexture texture, int posX, int posY, float angle);
 	void mergeTextures(HITexture originTexture, HITexture destinationTexture, short posX, short posY);
@@ -210,8 +198,7 @@ namespace HardwareInterface
 	void debugNewLine();
 
 	//GSP
-	enum  GSPGPU_Event
-	{
+	enum  GSPGPU_Event {
 		GSPGPU_EVENT_PSC0 = 0, ///< Memory fill completed.
 		GSPGPU_EVENT_PSC1,     ///< TODO
 		GSPGPU_EVENT_VBlank0,  ///< TODO
@@ -231,6 +218,6 @@ namespace HardwareInterface
 namespace HI = HardwareInterface;
 
 struct textureName {
-	HI::HITexture texture  = NULL;
+	HI::HITexture texture = NULL;
 	string name = "";
 };

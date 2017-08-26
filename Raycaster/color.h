@@ -8,6 +8,9 @@ public:
 	unsigned int getBComponent() const;
 	unsigned int getAComponent() const;
 	unsigned int getInt() const;
+	color operator*(color c)const;
+	color operator+(color c)const;
+	color operator-(color c)const;
 
 private:
 	unsigned int r, g, b,a;
